@@ -97,5 +97,5 @@ if (!valid) {
 //  Alery
   setTimeout(() => {
   alertBox.style.display = "none";
-}, 800);
+}, 900);
 });
