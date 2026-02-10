@@ -9,6 +9,14 @@ const childInput = document.getElementById("child");
 const phoneInput = document.getElementById("phone");
 const nameInput = document.getElementById("name");
 
+/* RESET ON PAGE LOAD */
+window.addEventListener("load", () => {
+  alertBox.style.display = "none";
+  alertBox.className = "alert";
+  alertBox.textContent = "";
+  form.reset();
+});
+
 /* Date Validation */
 const today = new Date().toISOString().split("T")[0];
 checkin.min = today;
@@ -20,10 +28,10 @@ checkin.addEventListener("change", () => {
   checkinDate.setDate(checkinDate.getDate() + 1);
 
   checkout.min = checkinDate.toISOString().split("T")[0];
-  checkout.value = ""; 
+  checkout.value = "";
 });
 
-/*Form Submit */
+/* Form Submit */
 form.addEventListener("submit", e => {
   e.preventDefault();
 
@@ -37,40 +45,23 @@ form.addEventListener("submit", e => {
   const children = +childInput.value || 0;
   const totalGuests = adults + children;
 
-  /*-Overall Validation-*/
+  /* Validation */
+  if (!nameInput.value.trim()) showErr(nameInput, "Full Name");
 
-  if (!nameInput.value.trim()) {
-    showErr(nameInput, "Full Name");
-  }
-
-  //Mobile Number Validation
   const phoneRegex = /^[6-9]\d{9}$/;
-  if (!phoneRegex.test(phoneInput.value.trim())) {
+  if (!phoneRegex.test(phoneInput.value.trim()))
     showErr(phoneInput, "Mobile Number");
-  }
 
-  if (!checkin.value) {
-    showErr(checkin, "Check-in Date");
-  }
+  if (!checkin.value) showErr(checkin, "Check-in Date");
 
-  // 🔴 CORE CHECK-OUT VALIDATION
-  if (!checkout.value) {
+  if (!checkout.value)
     showErr(checkout, "Check-out Date");
-  } else if (new Date(checkout.value) <= new Date(checkin.value)) {
+  else if (new Date(checkout.value) <= new Date(checkin.value))
     showErr(checkout, "Check-out must be after Check-in");
-  }
 
-  if (!room.value) {
-    showErr(room, "Room Type");
-  }
-
-  if (adults < 1) {
-    showErr(adultInput, "Adults (minimum 1)");
-  }
-
-  if (totalGuests > 10) {
-    showErr(childInput, "Total Guests (max 10)");
-  }
+  if (!room.value) showErr(room, "Room Type");
+  if (adults < 1) showErr(adultInput, "Adults (minimum 1)");
+  if (totalGuests > 10) showErr(childInput, "Total Guests (max 10)");
 
   function showErr(el, label) {
     el.nextElementSibling.style.display = "block";
@@ -78,24 +69,36 @@ form.addEventListener("submit", e => {
     valid = false;
   }
 
+  if (!valid) {
+    alertBox.innerHTML = `
+      ❌ Please fill in the required information<br>
+      ${errorFields.join(", ")}
+    `;
+    alertBox.className = "alert error";
+    alertBox.style.display = "block";
+    return;
+  }
 
-if (!valid) {
-  alertBox.innerHTML = `
-    ❌ Please fill in the required information to proceed<br>
-    ${errorFields.join(", ")}
-  `;
-  alertBox.className = "alert error";
-  alertBox.style.display = "block";
-  return;
-}
+  
 
-  alertBox.textContent = "✅ Booking submitted successfully!";
+  /* SUCCESS */
+  alertBox.textContent =
+    "✅ Booking submitted successfully!";
   alertBox.className = "alert success";
   alertBox.style.display = "block";
   form.reset();
 
-//  Alery
   setTimeout(() => {
-  alertBox.style.display = "none";
-}, 900);
+  alertBox.textContent = "🔄 Redirecting to Home...";
+}, 1500);
+
+  
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 2000);
 });
+
+
+function goHome(){
+  window.location.href = "index.html"; // change if needed
+}

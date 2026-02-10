@@ -40,6 +40,7 @@ body{
   padding:2rem;
   border-radius:16px;
   box-shadow:0 20px 40px rgba(0,0,0,.08);
+  position: relative;
 }
 
 h2{
@@ -47,6 +48,19 @@ h2{
     margin-bottom:1.5rem
 }
 
+.close-btn{
+  position:absolute;
+  top:15px;
+  right:18px;
+  font-size:20px;
+  cursor:pointer;
+  color:#64748b;
+  font-weight:bold;
+}
+
+.close-btn:hover{
+  color:#ef4444;
+}
 
 .row{
     display:grid;
