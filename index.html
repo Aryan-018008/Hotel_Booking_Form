@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grand Stay Hotel</title>
+<title>RoyalSUITE</title>
 
 <style>
 /* :root{
@@ -58,17 +58,50 @@ body{
   max-width:600px;
 }
 
-.hero button{
-  padding:.9rem 2rem;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,var(--primary),var(--accent));
-  color:#1f2937;
-  font-size:1.05rem;
-  font-weight: 600;
-  cursor:pointer;
-  gap: 18px;
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  margin-top:20px;
+  margin: 0 10px;
 }
+
+
+
+.hero-buttons button{
+  min-width:160px;
+}
+
+.hero button{
+  padding:.8rem 2.2rem;
+  border:none;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  color:#111827;
+  font-size:1.05rem;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s ease;
+  margin-bottom: 8px;
+}
+
+.hero button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(0,0,0,.25);
+}
+
+/* secondary button */
+.hero button.outline{
+  background:transparent;
+  color:#fff;
+  border:2px solid #fff;
+}
+
+.hero button.outline:hover{
+  background:#fff;
+  color:var(--primary);
+}
+
 
 /* SECTIONS */
 .section{
@@ -232,11 +265,14 @@ body{
   <div>
     <h1 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Welcome to RoyalSUITE</h1>
     <p>
-      <b style="text-align: center;">"Experience luxury, Acknowledge comfort"</b>
+      <b style="text-align: center;">"Experience Luxury, Acknowledge Comfort"</b>
     </p>
-    <button onclick="goToBooking()" style="gap: 12px;">Book Now</button> 
-    <button onclick="goToExplore()" style="gap: 12px;">Explore More</button> 
-    <!-- <button><a href="#feature" style="color: black;">Explore More</a></button> -->
+
+    <div class="hero-btns">
+    <button  type ="button" onclick="goToBooking()" >Book Now</button> 
+    <button  type ="button" onclick="goToExplore()" >Explore⬇️</button> 
+    
+  </div>
   </div>
 </section>
 
@@ -293,13 +329,13 @@ body{
 <!-- MINI CONTACT -->
 <section class="mini-contact">
   <h3>Contact Us</h3>
-  <p>
-    📍 Kettle_City &nbsp; | &nbsp;
-    📞 +91 6788888881 &nbsp; | &nbsp;
-    ✉️ info@royalsuite.com
-    🌐 www.royalsuite.com
 
+  <p>📍 Kettlebuorg City, UP  | 
+     📞 +91 8888599981 | 
+     ✉️ info@royalsuite.com | 
+     🌐 www.royalsuite.com 
   </p>
+  
 </section>
 
 

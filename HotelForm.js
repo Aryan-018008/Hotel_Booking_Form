@@ -83,7 +83,7 @@ form.addEventListener("submit", e => {
 
   /* SUCCESS */
   alertBox.textContent =
-    "✅ Booking submitted successfully!";
+    "✅ Booking submitted successfully! Thank You";
   alertBox.className = "alert success";
   alertBox.style.display = "block";
   form.reset();
